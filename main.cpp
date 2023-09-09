@@ -1,15 +1,13 @@
 #include <iostream>
-#include <vector>
-#include <string>
 
 #include "stack.h"
 
 using namespace std;
 
 int main() {
-    vector<string> msg{"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
-    for (const string &word : msg) {
-        cout << word << " ";
-    }
-    cout << endl;
+    auto stack = new Stack(3);
+    stack->push(12);
+    stack->push(3);
+    stack->push(7);
+    cout << stack->pop();
 }
