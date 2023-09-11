@@ -29,7 +29,7 @@ void Stack::push(const value_type &value) {
 value_type Stack::pop() {
     if (top == nullptr) {
         std::cout << "Переполнение стека снизу" << std::endl;
-        return value_type(); // TODO exit(1);
+        return value_type(); // TODO: exit(1);
     } else {
         auto poppedValue = this->top->getValue();;
         auto popped = this->top;
@@ -43,8 +43,17 @@ value_type Stack::pop() {
 const value_type& Stack::peek() const {
     if (top == nullptr) {
         std::cout << "Попытка подглядеть на пустой стек" << std::endl;
-        return this->none; // TODO exit(1);
+        return this->none; // TODO: exit(1);
     } else {
         return this->top->getValue();
     }
+}
+
+std::ostream &operator<<(std::ostream& os, const Stack &s) {
+    auto it = s.top;
+    for (auto i = 0; i < s.size; ++i) {
+        os << it->getValue() << " ";
+        it = it->getNext();
+    }    
+    return os;
 }
