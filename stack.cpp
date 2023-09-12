@@ -52,7 +52,11 @@ value_type Stack::pop() {
         delete popped;
         --this->size;
         this->sum -= poppedValue;
-        this->avarage = this->sum / this->size;
+        if (this->size == 0) {
+            this->avarage = 0;
+        } else {
+            this->avarage = this->sum / this->size;
+        }
         return poppedValue;
     }
 }

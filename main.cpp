@@ -13,4 +13,9 @@ int main() {
     cout << *s1 << endl;
     cout << s1->pop() << endl;
     cout << s0->getAvarage() << " " << s1->getAvarage() << endl;
+
+    s0->pop();
+    s0->pop();
+    s0->push(23);
+    cout << s0->getAvarage() << endl;
 }
