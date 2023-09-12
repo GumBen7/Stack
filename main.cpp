@@ -11,4 +11,6 @@ int main() {
     auto s1 = new Stack(*s0);
     cout << *s0 << endl;
     cout << *s1 << endl;
+    cout << s1->pop() << endl;
+    cout << s0->getAvarage() << " " << s1->getAvarage() << endl;
 }

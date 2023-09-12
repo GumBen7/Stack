@@ -8,6 +8,8 @@ Stack::Stack(size_t mS){
 
 Stack::Stack(const Stack &other) {
     this->maxSize = other.maxSize;
+    this->avarage = other.avarage;
+    this->sum = other.sum;
     auto it1 = other.top;
     auto it0 = this->top = new Node(it1->getValue());
     ++this->size;
@@ -34,6 +36,8 @@ void Stack::push(const value_type &value) {
         auto newNode = new Node(value, this->top);
         this->top = newNode;
         ++this->size;
+        this->sum += value;
+        this->avarage = this->sum / this->size;
     }
 }
 
@@ -47,6 +51,8 @@ value_type Stack::pop() {
         this->top = this->top->getNext();
         delete popped;
         --this->size;
+        this->sum -= poppedValue;
+        this->avarage = this->sum / this->size;
         return poppedValue;
     }
 }
@@ -58,6 +64,10 @@ const value_type& Stack::peek() const {
     } else {
         return this->top->getValue();
     }
+}
+
+double Stack::getAvarage() {
+    return this->avarage;
 }
 
 std::ostream &operator<<(std::ostream& os, const Stack &s) {
