@@ -7,6 +7,17 @@ Stack::Stack(size_t mS){
 }
 
 Stack::Stack(const Stack &other) {
+    this->maxSize = other.maxSize;
+    auto it1 = other.top;
+    auto it0 = this->top = new Node(it1->getValue());
+    ++this->size;
+    for (auto i = 0; i < other.size - 1; ++i) {
+        it1 = it1->getNext();
+        auto newNode = new Node(it1->getValue());
+        it0->setNext(newNode);
+        it0 = it0->getNext();
+        ++this->size;
+    }  
 }
 
 Stack::~Stack() {
